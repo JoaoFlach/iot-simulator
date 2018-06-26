@@ -11,7 +11,7 @@ public class Arduino implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String name;
-	private Light light = new Light(false); 
+	private Light light = new Light(LightStatusEnum.OFF); 
 	private Temperature temperature = new Temperature();
 	
 	public Arduino (String name) {
@@ -31,7 +31,12 @@ public class Arduino implements Serializable{
 	}
 	
 	public void turnLight() {
-		light.setStatus(!light.getStatus());
+		LightStatusEnum status = light.getStatus();
+		if(status == LightStatusEnum.OFF)
+			status = LightStatusEnum.ON;
+		else
+			status = LightStatusEnum.OFF;
+		light.setStatus(status);
 	}	
 	
 	public String getName() {

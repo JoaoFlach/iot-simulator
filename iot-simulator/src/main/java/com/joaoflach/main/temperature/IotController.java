@@ -1,4 +1,4 @@
-package com.joaoflach.main;
+package com.joaoflach.main.temperature;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.joaoflach.main.temperature.Arduino;
-import com.joaoflach.main.temperature.Database;
 
 @RestController
 public class IotController {

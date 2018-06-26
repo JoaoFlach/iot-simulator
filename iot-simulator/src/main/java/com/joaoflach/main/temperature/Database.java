@@ -8,6 +8,7 @@ public enum Database {
 	
 	private Map<Long, Thing> thingDatabase = new HashMap<>();
 	private Map<Long, Arduino> arduinoDatabase = new HashMap<>();
+	private Boolean airConditionerStatus = true;
 	private Long counter = 0L;
 	private Long arduinoCounter = 0L;
 
@@ -31,6 +32,18 @@ public enum Database {
 	
 	public Map<Long, Arduino> getArduinoDatabase() {
 		return arduinoDatabase;
+	}
+	
+	public void turnAirConditionerOn() {
+		this.airConditionerStatus=true;
+	}
+	
+	public void turnAirConditionerOff() {
+		this.airConditionerStatus=false;
+	}
+	
+	public Boolean airConditionerStatus() {
+		return this.airConditionerStatus;
 	}
 	
 }

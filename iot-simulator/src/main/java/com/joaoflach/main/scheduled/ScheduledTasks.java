@@ -1,4 +1,4 @@
-package com.joaoflach.main.temperature;
+package com.joaoflach.main.scheduled;
 
 
 import java.text.SimpleDateFormat;
@@ -11,6 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.joaoflach.main.dao.ProducerConnectionDao;
+import com.joaoflach.main.process.HumhubProcessor;
+import com.joaoflach.main.temperature.Arduino;
+import com.joaoflach.main.temperature.Database;
+
 @Component
 public class ScheduledTasks {
 
@@ -22,7 +27,7 @@ public class ScheduledTasks {
     private HumhubProcessor humhubProcessor;
 
     @Autowired
-	private UserDao userDao;
+    private ProducerConnectionDao producerConnectionDao;
       
     @Scheduled(fixedRate = 5000)
     public void alterTemperatures() {
@@ -38,11 +43,8 @@ public class ScheduledTasks {
     
     @Scheduled(fixedDelay = 2000)
     private void humhubExecutor(){
-    	
-    	String[] l = {"a","b","c"};
-		Arrays.asList(l).forEach(i -> {
-			humhubProcessor.process(i);
+    	producerConnectionDao.findAll().forEach(i -> {
+			humhubProcessor.executeProducerConnection(i);
 		});
-    	
     }
 }

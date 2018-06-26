@@ -7,19 +7,19 @@ public class Light implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private boolean status;
+	private LightStatusEnum status;
 	private String color;
 	
-	public Light(boolean status){
+	public Light(LightStatusEnum status){
 		this.status = status;
 		this.color = "WHITE";
 	}
 	
-	public boolean getStatus(){
+	public LightStatusEnum getStatus(){
 		return status;
 	}
 	
-	public void setStatus(boolean status) {
+	public void setStatus(LightStatusEnum status) {
 		this.status = status;
 	}
 
